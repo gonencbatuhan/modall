@@ -1,5 +1,3 @@
-
-
 #producing easy-reading passwords
 def get_password():
 	new_password = ""
@@ -34,10 +32,36 @@ def get_password():
 	return new_password
 	
 
+from time import time as stamp_t
+
+
 i1 = int(input("---\n\nhow many passwords do you want?: "))
 
+print("\n***\n")
+
+that_text = ""
+
 while i1 > 0:
-	print("-\n{}\n-\n".format( get_password() ))
+	n_password = get_password()
+
+	print("-\n{}".format( n_password ))
+
+	that_text += "{}\n".format(n_password)
 	i1 -= 1
-	
-print("-\n-\n-\n-\nthe end...\n")
+
+
+i2 = input("\n-do you want to save it?(y/n):")
+
+if i2 == "y":
+    from time import time as stamp_t
+    
+    file = open("{}.txt".format(str( stamp_t() )) , "w")
+    file.write(that_text)
+    file.close()
+
+    print("-\n-\nsaved successfully.\n")
+else:
+    pass
+
+
+print("-\nthe end...\n")
